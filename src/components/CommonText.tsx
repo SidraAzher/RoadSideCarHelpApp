@@ -1,6 +1,9 @@
 import React from 'react'
 import { Text } from 'react-native'
 
+
+//Test
+
 interface TextType {
     color: string,
     size: number,
@@ -9,6 +12,7 @@ interface TextType {
     mh?: number,
     mv?: number
 }
+
 export const CommonText = ({ color, size, mt, mb, mh, mv }: TextType) => {
     return <Text style={{ color: color, fontSize: size, marginTop: mt, marginBottom: mb, marginHorizontal: mh, marginVertical: mv }}>
         Helllllooo
