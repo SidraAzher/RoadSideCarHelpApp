@@ -8,13 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* RoadsideCarHelpAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* RoadsideCarHelpAppTests.m */; };
+		08168438365B43D6BC51C199 /* SofiaPro-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CC1CEF51AE8441F796B65DB5 /* SofiaPro-SemiBold.ttf */; };
 		0C80B921A6F3F58F76C31292 /* libPods-RoadsideCarHelpApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DCACB8F33CDC322A6C60F78 /* libPods-RoadsideCarHelpApp.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		395079985E3F4265BD089004 /* SofiaPro-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 313B9EFE377048A180BC4088 /* SofiaPro-Regular.ttf */; };
+		4282C662B5EA437F9195DFDA /* c.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A85767421FF149989BDD7B25 /* c.ttf */; };
+		5EDFDFE8CA854AB4ABD6D6B7 /* SofiaPro-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 77DAC80009974ED49C1CE4B3 /* SofiaPro-Light.ttf */; };
 		7699B88040F8A987B510C191 /* libPods-RoadsideCarHelpApp-RoadsideCarHelpAppTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-RoadsideCarHelpApp-RoadsideCarHelpAppTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		A2C4C72042084B59BB736C42 /* SofiaPro-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 753F136AC9854A6E88CB37BE /* SofiaPro-Medium.ttf */; };
 		EDF356E568F3C232C33864BE /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 15FDC09D0C3EC992287E8299 /* PrivacyInfo.xcprivacy */; };
+		F6E3E3646BB14E158003E9F2 /* SofiaPro-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 32295BA4046049359A366698 /* SofiaPro-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,12 +46,18 @@
 		13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PrivacyInfo.xcprivacy; path = RoadsideCarHelpApp/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		15FDC09D0C3EC992287E8299 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = RoadsideCarHelpApp/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-RoadsideCarHelpApp-RoadsideCarHelpAppTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RoadsideCarHelpApp-RoadsideCarHelpAppTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		313B9EFE377048A180BC4088 /* SofiaPro-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SofiaPro-Regular.ttf"; path = "../src/assets/fonts/SofiaPro-Regular.ttf"; sourceTree = "<group>"; };
+		32295BA4046049359A366698 /* SofiaPro-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SofiaPro-Bold.ttf"; path = "../src/assets/fonts/SofiaPro-Bold.ttf"; sourceTree = "<group>"; };
 		3B4392A12AC88292D35C810B /* Pods-RoadsideCarHelpApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RoadsideCarHelpApp.debug.xcconfig"; path = "Target Support Files/Pods-RoadsideCarHelpApp/Pods-RoadsideCarHelpApp.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-RoadsideCarHelpApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RoadsideCarHelpApp.release.xcconfig"; path = "Target Support Files/Pods-RoadsideCarHelpApp/Pods-RoadsideCarHelpApp.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-RoadsideCarHelpApp-RoadsideCarHelpAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RoadsideCarHelpApp-RoadsideCarHelpAppTests.debug.xcconfig"; path = "Target Support Files/Pods-RoadsideCarHelpApp-RoadsideCarHelpAppTests/Pods-RoadsideCarHelpApp-RoadsideCarHelpAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-RoadsideCarHelpApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RoadsideCarHelpApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		753F136AC9854A6E88CB37BE /* SofiaPro-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SofiaPro-Medium.ttf"; path = "../src/assets/fonts/SofiaPro-Medium.ttf"; sourceTree = "<group>"; };
+		77DAC80009974ED49C1CE4B3 /* SofiaPro-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SofiaPro-Light.ttf"; path = "../src/assets/fonts/SofiaPro-Light.ttf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = RoadsideCarHelpApp/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-RoadsideCarHelpApp-RoadsideCarHelpAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RoadsideCarHelpApp-RoadsideCarHelpAppTests.release.xcconfig"; path = "Target Support Files/Pods-RoadsideCarHelpApp-RoadsideCarHelpAppTests/Pods-RoadsideCarHelpApp-RoadsideCarHelpAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		A85767421FF149989BDD7B25 /* c.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = c.ttf; path = ../src/assets/fonts/c.ttf; sourceTree = "<group>"; };
+		CC1CEF51AE8441F796B65DB5 /* SofiaPro-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "SofiaPro-SemiBold.ttf"; path = "../src/assets/fonts/SofiaPro-SemiBold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -101,6 +113,20 @@
 			name = RoadsideCarHelpApp;
 			sourceTree = "<group>";
 		};
+		247B111463E743958A566598 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				32295BA4046049359A366698 /* SofiaPro-Bold.ttf */,
+				77DAC80009974ED49C1CE4B3 /* SofiaPro-Light.ttf */,
+				753F136AC9854A6E88CB37BE /* SofiaPro-Medium.ttf */,
+				313B9EFE377048A180BC4088 /* SofiaPro-Regular.ttf */,
+				CC1CEF51AE8441F796B65DB5 /* SofiaPro-SemiBold.ttf */,
+				A85767421FF149989BDD7B25 /* c.ttf */,
+			);
+			name = Resources;
+			path = "";
+			sourceTree = "<group>";
+		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +153,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				247B111463E743958A566598 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -249,6 +276,12 @@
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				EDF356E568F3C232C33864BE /* PrivacyInfo.xcprivacy in Resources */,
+				F6E3E3646BB14E158003E9F2 /* SofiaPro-Bold.ttf in Resources */,
+				5EDFDFE8CA854AB4ABD6D6B7 /* SofiaPro-Light.ttf in Resources */,
+				A2C4C72042084B59BB736C42 /* SofiaPro-Medium.ttf in Resources */,
+				395079985E3F4265BD089004 /* SofiaPro-Regular.ttf in Resources */,
+				08168438365B43D6BC51C199 /* SofiaPro-SemiBold.ttf in Resources */,
+				4282C662B5EA437F9195DFDA /* c.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
