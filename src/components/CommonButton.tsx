@@ -26,7 +26,7 @@ export const CommonButton = ({ title, mTop, variant, state }: ButtonType) => {
         </TouchableOpacity>
     }
 }
-
+//Styles
 const styles = StyleSheet.create({
     linearGradient: {
         borderRadius: 10,
