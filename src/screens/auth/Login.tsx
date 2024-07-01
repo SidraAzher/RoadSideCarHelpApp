@@ -26,9 +26,9 @@ const Login = () => {
     return (
         <View style={styles.main}>
             <CommonText variant="h1" size={100} color="pink" style={{ margin: 50 }}>Sidra</CommonText>
-            <Input onChangeText={getData} multiline={true} placeholder="Email Address" leftIcon={Images.sms} rightIcon={Images.sms} onClickRightButton={() => console.log('pressed')} />
+            <Input onChangeText={getData} multiline={true} placeholder="Email Address" leftIcon={Images.IcSms} rightIcon={Images.IcSms} onClickRightButton={() => console.log('pressed')} />
             {error == true && <CommonText variant="h1" color="red">Field is Empty</CommonText>}
-            <Input onChangeText={getData} style={{ marginTop: 10 }} multiline={true} placeholder="Password" leftIcon={Images.sms} rightIcon={Images.sms} onClickRightButton={() => console.log('pressed')} />
+            <Input onChangeText={getData} style={{ marginTop: 10 }} multiline={true} placeholder="Password" leftIcon={Images.IcSms} rightIcon={Images.IcSms} onClickRightButton={() => console.log('pressed')} />
             {error == true && <CommonText variant="h1" color="red">Field is Empty</CommonText>}
 
             <Button
@@ -38,9 +38,9 @@ const Login = () => {
                 () => navigation.goBack()
             } title='navigate back to home' />
 
-            <CommonButton variant='success' title="SIGN IN" />
+            <CommonButton variant="primary" title="Sign in" />
 
-
+            <CommonButton icon={Images.IcPhone} bgColor="maroon" />
 
         </View>
     )
