@@ -21,26 +21,23 @@ const Login = () => {
         }
 
     }
-
-
     return (
         <View style={styles.main}>
             <CommonText variant="h1" size={100} color="pink" style={{ margin: 50 }}>Sidra</CommonText>
             <Input onChangeText={getData} multiline={true} placeholder="Email Address" leftIcon={Images.IcSms} rightIcon={Images.IcSms} onClickRightButton={() => console.log('pressed')} />
             {error == true && <CommonText variant="h1" color="red">Field is Empty</CommonText>}
-            <Input onChangeText={getData} style={{ marginTop: 10 }} multiline={true} placeholder="Password" leftIcon={Images.IcSms} rightIcon={Images.IcSms} onClickRightButton={() => console.log('pressed')} />
+            <Input onChangeText={getData} mTop={10} multiline={true} placeholder="Password" leftIcon={Images.IcSms} rightIcon={Images.IcSms} onClickRightButton={() => console.log('pressed')} />
             {error == true && <CommonText variant="h1" color="red">Field is Empty</CommonText>}
 
             <Button
                 onPress={CheckFields}
                 title="Submit" />
             <Button onPress={
-                () => navigation.goBack()
-            } title='navigate back to home' />
+                () => navigation.navigate('Home')
 
-            <CommonButton variant="primary" title="Sign in" />
-
-            <CommonButton icon={Images.IcPhone} bgColor="maroon" />
+            } title='navigate to home' />
+            <CommonButton title="sd" />
+            {/* <CommonButton title="sidsji" /> */}
 
         </View>
     )

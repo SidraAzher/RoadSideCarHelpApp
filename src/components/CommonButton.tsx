@@ -15,11 +15,9 @@ interface ButtonType {
     bgColor?: string
 
 }
-export const CommonButton = ({ title, mTop, variant, state, leftIcon, rightIcon, icon, bgColor }: ButtonType) => {
+export const CommonButton = ({ title, mTop, variant, state, leftIcon, rightIcon, icon, bgColor = 'grey' }: ButtonType) => {
     const variantOption = variant
-    console.log('variantOption', variantOption)
-
-    if (variantOption == "primary") {
+    if (variantOption == "primary" || title) {
         return <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={state == 'disabled' && variantOption == 'primary' ? ['rgba(0, 160, 182,0.5)', 'rgba(166, 197, 34,0.5)'] : ['rgb(0, 160, 182)', 'rgb(166, 197, 34)']} style={[styles.linearGradient, { marginTop: mTop }]}>
             <TouchableOpacity style={styles.main}>
                 <Image source={leftIcon} />
@@ -33,11 +31,11 @@ export const CommonButton = ({ title, mTop, variant, state, leftIcon, rightIcon,
         {
             backgroundColor: state == 'disabled'
                 ? (variantOption == 'error' ? "rgba(234, 18, 26,0.5)" :
-                    (variantOption == 'success' ? 'rgba(6, 191, 40,0.5)' :
-                        (variantOption == 'tertiaryGrey' ? 'rgba(120, 132, 158,0.5)' : '')))
+                    variantOption == 'success' ? 'rgba(6, 191, 40,0.5)' :
+                        variantOption == 'tertiaryGrey' ? 'rgba(120, 132, 158,0.5)' : '')
                 : (variantOption == 'error' ? 'rgb(234, 18, 26)' :
-                    (variantOption == 'success' ? 'rgb(6, 191, 40)' :
-                        (variantOption == 'tertiaryGrey' ? 'rgb(120, 132, 158)' : '')))
+                    variantOption == 'success' ? 'rgb(6, 191, 40)' :
+                        variantOption == 'tertiaryGrey' ? 'rgb(120, 132, 158)' : ''), marginTop: mTop
         }]}>
             <Image source={leftIcon} />
             <CommonText style={styles.btnText} variant="h3" color="white">{title}</CommonText>

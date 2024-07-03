@@ -11,15 +11,28 @@ interface InputType {
     multiline?: boolean
     style?: StyleProp<TextStyle>
     onChangeText?: (param: string) => void
-
+    mTop?: number
 }
-
-export const Input = ({ placeholder, leftIcon, rightIcon, onClickRightButton, props, style, onChangeText }: InputType) => {
-
+export const Input = ({ placeholder, leftIcon, rightIcon, onClickRightButton, props, onChangeText, mTop }: InputType) => {
+    const [isFocused, setIsFocused] = useState<boolean>(false);
+    const handleFocus = () => {
+        setIsFocused(true);
+    }
+    const handleBlur = () => {
+        setIsFocused(false);
+    }
     return (
-        <View style={[styles.main, style]}>
+        <View style={[styles.main, { marginTop: mTop }, isFocused == true ? { borderColor: 'blue', borderWidth: 2 } : { borderWidth: 0 }]}>
             <Image source={leftIcon} />
-            <TextInput onPressIn={() => console.log("focused")} {...props} placeholder={placeholder} style={styles.input} placeholderTextColor={DarkGrey} onChangeText={onChangeText} />
+            <TextInput
+                {...props}
+                placeholder={placeholder}
+                style={styles.input}
+                placeholderTextColor={DarkGrey}
+                onChangeText={onChangeText}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+            />
             <TouchableOpacity onPress={onClickRightButton}>
                 <Image source={rightIcon} />
             </TouchableOpacity>
@@ -32,7 +45,7 @@ const styles = StyleSheet.create({
         backgroundColor: lightGrey,
         paddingVertical: 19,
         paddingHorizontal: 20,
-        borderRadius: 10
+        borderRadius: 10,
     },
     input: {
         flex: 1,
