@@ -1,53 +1,39 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Button } from "react-native";
+import { View, StyleSheet, Button, Image, ScrollView } from "react-native";
 import { CommonButton, CommonText, Input } from "../../components";
 import { useNavigation } from "@react-navigation/native";
 import Images from "../../themes/images";
+import { Colors } from "../../themes/colors";
 
 const Login = () => {
     const navigation = useNavigation();
-    const [data, setData] = useState<string>('')
-    const [error, showError] = useState<boolean>(false)
-
-    console.log('data ==>>', data)
-
-    const getData = (x: string) => {
-        setData(x)
-    }
-    const CheckFields = () => {
-        console.log('Buttonpresses')
-        if (data == "") {
-            showError(true)
-        }
-
-    }
     return (
-        <View style={styles.main}>
-            <CommonText variant="h1" size={100} color="pink" style={{ margin: 50 }}>Sidra</CommonText>
-            <Input onChangeText={getData} multiline={true} placeholder="Email Address" leftIcon={Images.IcSms} rightIcon={Images.IcSms} onClickRightButton={() => console.log('pressed')} />
-            {error == true && <CommonText variant="h1" color="red">Field is Empty</CommonText>}
-            <Input onChangeText={getData} mTop={10} multiline={true} placeholder="Password" leftIcon={Images.IcSms} rightIcon={Images.IcSms} onClickRightButton={() => console.log('pressed')} />
-            {error == true && <CommonText variant="h1" color="red">Field is Empty</CommonText>}
-
-            <Button
-                onPress={CheckFields}
-                title="Submit" />
-            <Button onPress={
-                () => navigation.navigate('Home')
-
-            } title='navigate to home' />
-            <CommonButton title="sd" />
-            {/* <CommonButton title="sidsji" /> */}
-
-        </View>
+        < ScrollView contentContainerStyle={styles.main} >
+            <Image source={Images.IcLogo} style={{ width: 86, height: 46 }} />
+            <CommonText color={Colors.DarkGrey} variant="h1" mTop={67} style={{ letterSpacing: 0.56 }} >Hello There.</CommonText>
+            <CommonText variant="h4" color={Colors.DarkGrey} mTop={11} style={{ letterSpacing: 0.56 }}>Login or sign up to continue.</CommonText>
+            <Input placeholder="Email" leftIcon={Images.IcSms} mTop={25} />
+            <Input placeholder="Password" leftIcon={Images.IcSms} mTop={11} />
+            <CommonText variant="h2" size={12} color={Colors.Blue} mTop={16} textAlign="right">Forgot Password</CommonText>
+            <CommonButton variant="primary" title="SIGN IN" mTop={51} onPress={() => navigation.navigate('SignUp')} />
+            <View style={styles.txtContainer}>
+                <CommonText variant="h6" >Don’t have an account?</CommonText>
+                <CommonText variant="h2" size={12} color={Colors.Blue} >SIGN UP</CommonText>
+            </View>
+        </ScrollView >
     )
-
 }
 const styles = StyleSheet.create({
     main: {
-        // marginTop: 100,
         flex: 1,
-        backgroundColor: "skyblue"
+        paddingHorizontal: 16,
+        justifyContent: 'center'
+
+    },
+    txtContainer: {
+        flexDirection: 'row',
+        marginTop: 34,
+        justifyContent: 'center'
     }
 })
 export default Login

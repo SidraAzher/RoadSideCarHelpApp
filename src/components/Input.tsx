@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Image, ImageProps, StyleProp, StyleSheet, Text, TextInput, TextInputProps, TextStyle, TouchableOpacity, View, } from 'react-native'
-import { DarkGrey, lightGrey } from '../themes/colors'
+import { Colors } from '../themes/colors'
 
 interface InputType {
     placeholder: string
@@ -28,7 +28,7 @@ export const Input = ({ placeholder, leftIcon, rightIcon, onClickRightButton, pr
                 {...props}
                 placeholder={placeholder}
                 style={styles.input}
-                placeholderTextColor={DarkGrey}
+                placeholderTextColor={Colors.DarkGrey}
                 onChangeText={onChangeText}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
@@ -42,7 +42,7 @@ export const Input = ({ placeholder, leftIcon, rightIcon, onClickRightButton, pr
 const styles = StyleSheet.create({
     main: {
         flexDirection: 'row',
-        backgroundColor: lightGrey,
+        backgroundColor: Colors.LightGrey,
         paddingVertical: 19,
         paddingHorizontal: 20,
         borderRadius: 10,

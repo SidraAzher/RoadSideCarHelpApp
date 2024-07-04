@@ -13,13 +13,14 @@ interface ButtonType {
     rightIcon?: ImageSourcePropType
     icon?: ImageSourcePropType;
     bgColor?: string
+    onPress: () => void
 
 }
-export const CommonButton = ({ title, mTop, variant, state, leftIcon, rightIcon, icon, bgColor = 'grey' }: ButtonType) => {
+export const CommonButton = ({ title, mTop, variant, state, leftIcon, rightIcon, icon, bgColor = 'grey', onPress }: ButtonType) => {
     const variantOption = variant
     if (variantOption == "primary" || title) {
         return <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={state == 'disabled' && variantOption == 'primary' ? ['rgba(0, 160, 182,0.5)', 'rgba(166, 197, 34,0.5)'] : ['rgb(0, 160, 182)', 'rgb(166, 197, 34)']} style={[styles.linearGradient, { marginTop: mTop }]}>
-            <TouchableOpacity style={styles.main}>
+            <TouchableOpacity style={styles.main} onPress={onPress}>
                 <Image source={leftIcon} />
                 <CommonText style={styles.btnText} variant="h3" color="white">{title}</CommonText>
                 <Image source={rightIcon} />

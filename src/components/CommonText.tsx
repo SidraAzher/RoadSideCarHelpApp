@@ -7,6 +7,8 @@ interface TextType {
     style?: StyleProp<TextStyle>,
     color?: string,
     size?: number,
+    textAlign?: "auto" | "center" | "right" | "left" | "justify"
+    mTop?: number
 }
 
 const variantObj = {
@@ -19,7 +21,7 @@ const variantObj = {
     {
         fontSize: 20,
         fontFamily: 'SofiaProSemiBold',
-        lineHeight: 17
+        lineHeight: 17,
     },
     h3:
     {
@@ -68,9 +70,9 @@ const selectedVariant = (variant: string) => {
 }
 
 export const CommonText = (
-    { children, variant, color, size, style }: TextType) => {
+    { children, variant, color, size, style, textAlign, mTop }: TextType) => {
     const staticStyles = { ...selectedVariant(variant) };
-    return <Text style={[staticStyles, { fontSize: size ? size : staticStyles.fontSize, color: color }, style]}
+    return <Text style={[staticStyles, { fontSize: size ? size : staticStyles.fontSize, color: color, textAlign: textAlign, marginTop: mTop }, style]}
     >
         {children}
     </Text >
