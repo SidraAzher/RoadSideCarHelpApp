@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleProp, Text, TextStyle } from 'react-native'
+import { StyleProp, Text, TextProps, TextStyle } from 'react-native'
 
 interface TextType {
     children: React.ReactNode,
@@ -9,6 +9,9 @@ interface TextType {
     size?: number,
     textAlign?: "auto" | "center" | "right" | "left" | "justify"
     mTop?: number
+    props?: TextProps
+    textDecorationLine?: string
+    onPress?: () => void
 }
 
 const variantObj = {
@@ -70,9 +73,9 @@ const selectedVariant = (variant: string) => {
 }
 
 export const CommonText = (
-    { children, variant, color, size, style, textAlign, mTop }: TextType) => {
+    { children, variant, color, size, style, textAlign, mTop, props, onPress }: TextType) => {
     const staticStyles = { ...selectedVariant(variant) };
-    return <Text style={[staticStyles, { fontSize: size ? size : staticStyles.fontSize, color: color, textAlign: textAlign, marginTop: mTop }, style]}
+    return <Text onPress={onPress} {...props} style={[staticStyles, { fontSize: size ? size : staticStyles.fontSize, color: color, textAlign: textAlign, marginTop: mTop }, style]}
     >
         {children}
     </Text >

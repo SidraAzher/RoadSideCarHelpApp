@@ -11,8 +11,8 @@ let Images = {
     IcCake: require('../assets/images/IcCake.png'),
     IcPassword: require('../assets/images/IcPassword.png'),
     IcPhoneNo: require('../assets/images/IcPhoneNo.png'),
-    // IcAdd: require('../assets/images/IcAdd.png'),
-    // IcAdd: require('../assets/images/IcAdd.png'),
+    IcDownArrow: require('../assets/images/IcDownArrow.png'),
+    IcLeftArrow: require('../assets/images/IcLeftArrow.png'),
     // IcAdd: require('../assets/images/IcAdd.png'),
     // IcAdd: require('../assets/images/IcAdd.png'),
 

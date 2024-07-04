@@ -13,7 +13,7 @@ interface InputType {
     onChangeText?: (param: string) => void
     mTop?: number
 }
-export const Input = ({ placeholder, leftIcon, rightIcon, onClickRightButton, props, onChangeText, mTop }: InputType) => {
+export const Input = ({ placeholder, leftIcon, rightIcon, onClickRightButton, props, onChangeText, mTop, style }: InputType) => {
     const [isFocused, setIsFocused] = useState<boolean>(false);
     const handleFocus = () => {
         setIsFocused(true);
@@ -22,7 +22,7 @@ export const Input = ({ placeholder, leftIcon, rightIcon, onClickRightButton, pr
         setIsFocused(false);
     }
     return (
-        <View style={[styles.main, { marginTop: mTop }, isFocused == true ? { borderColor: 'blue', borderWidth: 2 } : { borderWidth: 0 }]}>
+        <View style={[styles.main, { marginTop: mTop }, isFocused == true ? { borderColor: 'blue', borderWidth: 2 } : { borderWidth: 0 }, style]}>
             <Image source={leftIcon} />
             <TextInput
                 {...props}
