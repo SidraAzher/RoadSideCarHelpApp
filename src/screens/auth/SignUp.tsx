@@ -10,7 +10,7 @@ const SignUp = () => {
                 <Image source={Images.IcProfilePic} />
                 <Image source={Images.IcAdd} style={styles.addImg} />
             </View>
-            <Input leftIcon={Images.IcProfile} placeholder="Full Name" />
+            <Input leftIcon={Images.IcProfile} placeholder="Full Name" mTop={36} />
             <Input leftIcon={Images.IcSms} placeholder="Email" mTop={11} />
             <Input leftIcon={Images.IcPhoneNo} placeholder="Phone No" mTop={11} rightIcon={Images.IcDownArrow} />
             <Input leftIcon={Images.IcAddress} placeholder="Address" mTop={11} rightIcon={Images.IcDownArrow} />
@@ -38,7 +38,8 @@ const SignUp = () => {
 const styles = StyleSheet.create({
     main: {
         justifyContent: "center",
-        paddingHorizontal: 16
+        paddingHorizontal: 16,
+        backgroundColor: 'white'
     },
     imgContainer: {
         flexDirection: 'row',

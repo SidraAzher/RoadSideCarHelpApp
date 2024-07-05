@@ -13,8 +13,8 @@ let Images = {
     IcPhoneNo: require('../assets/images/IcPhoneNo.png'),
     IcDownArrow: require('../assets/images/IcDownArrow.png'),
     IcLeftArrow: require('../assets/images/IcLeftArrow.png'),
-    // IcAdd: require('../assets/images/IcAdd.png'),
-    // IcAdd: require('../assets/images/IcAdd.png'),
+    IcOpenEye: require('../assets/images/icOpenEye.png'),
+    IcCloseEye: require('../assets/images/IcCloseEye.png'),
 
 
 }

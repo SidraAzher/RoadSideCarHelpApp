@@ -34,7 +34,7 @@ export const Input = ({ placeholder, leftIcon, rightIcon, onClickRightButton, pr
                 onBlur={handleBlur}
             />
             <TouchableOpacity onPress={onClickRightButton}>
-                <Image source={rightIcon} />
+                <Image source={rightIcon} style={{ tintColor: 'grey' }} />
             </TouchableOpacity>
         </View>
     )
