@@ -14,9 +14,10 @@ interface ButtonType {
     icon?: ImageSourcePropType;
     bgColor?: string
     onPress: () => void
+    style?: any
 
 }
-export const CommonButton = ({ title, mTop, variant, state, leftIcon, rightIcon, icon, bgColor = 'grey', onPress }: ButtonType) => {
+export const CommonButton = ({ title, mTop, variant, state, leftIcon, rightIcon, icon, bgColor = 'grey', onPress, style }: ButtonType) => {
     const variantOption = variant
     if (variantOption == "primary" || title) {
         return <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={state == 'disabled' && variantOption == 'primary' ? ['rgba(0, 160, 182,0.5)', 'rgba(166, 197, 34,0.5)'] : ['rgb(0, 160, 182)', 'rgb(166, 197, 34)']} style={[styles.linearGradient, { marginTop: mTop }]}>
@@ -44,7 +45,7 @@ export const CommonButton = ({ title, mTop, variant, state, leftIcon, rightIcon,
         </TouchableOpacity>
     }
     else {
-        return <TouchableOpacity style={[styles.iconContainer, { backgroundColor: bgColor }]}>
+        return <TouchableOpacity style={[styles.iconContainer, { backgroundColor: bgColor }, style]}>
             <Image source={icon} />
         </TouchableOpacity>
 

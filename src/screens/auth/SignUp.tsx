@@ -1,9 +1,11 @@
 import React from "react";
-import { Image, KeyboardAvoidingView, ScrollView, StyleSheet, View } from "react-native";
+import { Button, Image, KeyboardAvoidingView, ScrollView, StyleSheet, View } from "react-native";
 import Images from "../../themes/images";
 import { CommonButton, CommonText, Input } from "../../components";
 import { Colors } from "../../themes/colors";
+import { useNavigation } from "@react-navigation/native";
 const SignUp = () => {
+    const navigation = useNavigation();
     return (
         <ScrollView contentContainerStyle={styles.main} automaticallyAdjustKeyboardInsets={true}>
             <View style={styles.imgContainer}>
@@ -11,6 +13,8 @@ const SignUp = () => {
                 <Image source={Images.IcAdd} style={styles.addImg} />
             </View>
             <Input leftIcon={Images.IcProfile} placeholder="Full Name" mTop={36} />
+            <Input leftIcon={Images.IcProfile} placeholder="User ID" mTop={11} />
+            <Input leftIcon={Images.IcProfile} placeholder="User Name" mTop={11} />
             <Input leftIcon={Images.IcSms} placeholder="Email" mTop={11} />
             <Input leftIcon={Images.IcPhoneNo} placeholder="Phone No" mTop={11} rightIcon={Images.IcDownArrow} />
             <Input leftIcon={Images.IcAddress} placeholder="Address" mTop={11} rightIcon={Images.IcDownArrow} />

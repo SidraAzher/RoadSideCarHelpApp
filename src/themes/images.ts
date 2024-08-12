@@ -15,6 +15,22 @@ let Images = {
     IcLeftArrow: require('../assets/images/IcLeftArrow.png'),
     IcOpenEye: require('../assets/images/icOpenEye.png'),
     IcCloseEye: require('../assets/images/IcCloseEye.png'),
+    IcMap: require('../assets/images/IcMap.png'),
+    IcGps: require('../assets/images/IcGps.png'),
+    IcProfileCircle: require('../assets/images/IcProfileCircle.png'),
+    IcHome: require('../assets/images/IcHome.png'),
+    IcSettings: require('../assets/images/IcSettings.png'),
+    IcHuman: require('../assets/images/IcHuman.png'),
+    // IcSettings: require('../assets/images/IcSettings.png'),
+    // IcSettings: require('../assets/images/IcSettings.png'),
+    // IcSettings: require('../assets/images/IcSettings.png'),
+    // IcSettings: require('../assets/images/IcSettings.png'),
+    // IcSettings: require('../assets/images/IcSettings.png'),
+    // IcSettings: require('../assets/images/IcSettings.png'),
+    // IcSettings: require('../assets/images/IcSettings.png'),
+    // IcSettings: require('../assets/images/IcSettings.png'),
+
+
 
 
 }
