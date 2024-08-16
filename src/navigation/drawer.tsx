@@ -4,7 +4,7 @@ import { CommonText } from "../components";
 import Images from "../themes/images";
 import { Colors } from "../themes/colors";
 
-export const DrawerContent = () => {
+export const DrawerContent = ({ navigation }) => {
     const arry = [
         {
             title: 'Home',
@@ -38,7 +38,7 @@ export const DrawerContent = () => {
             </View>
             <FlatList data={arry} renderItem={renderItems} style={styles.flatlist} />
             <View style={{ marginTop: 21 }}>
-                <CommonText variant="h4" color="white" >Log out</CommonText>
+                <CommonText variant="h4" color="white" onPress={() => navigation.navigate('Login')}>Log out</CommonText>
                 <CommonText variant="h5" color={Colors.Grey} style={{ lineHeight: 55 }}>jonathan.marshall@outlook.com</CommonText>
             </View>
         </View>

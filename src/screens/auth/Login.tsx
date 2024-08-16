@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { View, StyleSheet, Button, Image, ScrollView } from "react-native";
 import { CommonButton, CommonText, Input } from "../../components";
 import { useNavigation } from "@react-navigation/native";
 import Images from "../../themes/images";
 import { Colors } from "../../themes/colors";
+import { Context } from "../../context";
 
 const Login = () => {
+    const screenContext = useContext(Context)
+    console.log('context', screenContext)
     const navigation = useNavigation();
     return (
         < ScrollView contentContainerStyle={styles.main} >
@@ -15,7 +18,7 @@ const Login = () => {
             <Input placeholder="User Name" leftIcon={Images.IcProfile} mTop={25} />
             <Input placeholder="Password" leftIcon={Images.IcPassword} mTop={11} rightIcon={Images.IcOpenEye} />
             <CommonText onPress={() => navigation.navigate('ForgotPassword')} variant="h2" size={12} color={Colors.Blue} mTop={16} textAlign="right">Forgot Password?</CommonText>
-            <CommonButton variant="primary" title="SIGN IN" mTop={51} onPress={() => navigation.navigate('Home')} />
+            <CommonButton variant="primary" title="SIGN IN" mTop={51} onPress={() => screenContext.setLogin(true)} />
             <View style={styles.txtContainer}>
                 <CommonText variant="h6" >Don’t have an account?</CommonText>
                 <CommonText variant="h2" size={12} color={Colors.Blue} onPress={() => navigation.navigate('SignUp')}> SIGN UP</CommonText>
