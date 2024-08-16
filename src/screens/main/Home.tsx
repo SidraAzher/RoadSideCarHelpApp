@@ -1,9 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, StyleSheet, ImageBackground } from "react-native";
 import Images from "../../themes/images";
 import { CommonButton } from "../../components";
-
+import { getUsers } from "../../services/ApiCall";
 const Home = () => {
+
+    const fetchUsers = async () => {
+        try {
+            const userData = await getUsers();
+            console.log("userData", userData)
+
+        } catch (error) {
+            console.error('Error fetching users:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchUsers();
+    }, []);
+
+
+
+
     const CurrentLocation = ({ align, radius, justify }) => {
         return (
             <View style={{ backgroundColor: "rgba(166, 197, 34,0.3)", width: 82, height: 82, borderRadius: radius, alignItems: align, justifyContent: justify }}>

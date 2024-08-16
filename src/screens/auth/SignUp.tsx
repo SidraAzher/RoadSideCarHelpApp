@@ -61,6 +61,9 @@ const SignUp = () => {
 
     )
 }
+
+
+
 const styles = StyleSheet.create({
     main: {
         justifyContent: "center",

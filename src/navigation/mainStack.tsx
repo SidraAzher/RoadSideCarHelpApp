@@ -17,15 +17,16 @@ export const MainStack = () => {
                 })}
             >
                 <Stack.Screen
-                    name='EditProfile'
-                    component={EditProfile}
-                // options={{ headerShown: false }}
-                />
-                <Stack.Screen
                     name='MyDrawer'
                     component={MyDrawer}
                     options={{ headerShown: false }}
                 />
+                <Stack.Screen
+                    name='EditProfile'
+                    component={EditProfile}
+                // options={{ headerShown: false }}
+                />
+
 
             </Stack.Group>
         </Stack.Navigator>
