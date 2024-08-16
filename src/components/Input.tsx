@@ -11,7 +11,8 @@ interface InputType {
     multiline?: boolean
     style?: StyleProp<TextStyle>
     onChangeText?: (param: string) => void
-    mTop?: number
+    mTop?: number,
+    disabled?: boolean
 }
 export const Input = ({ placeholder, leftIcon, rightIcon, onClickRightButton, props, onChangeText, mTop, style }: InputType) => {
     const [isFocused, setIsFocused] = useState<boolean>(false);
