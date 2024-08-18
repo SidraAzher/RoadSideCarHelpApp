@@ -48,6 +48,7 @@ export const Input = ({
     editable,
     secureTextEntry,
     inputMode,
+    value
 }: InputType) => {
     const [isFocused, setIsFocused] = useState<boolean>(false);
     const handleFocus = () => {
@@ -78,6 +79,7 @@ export const Input = ({
                 editable={editable}
                 secureTextEntry={secureTextEntry}
                 inputMode={inputMode}
+                value={value}
             />
             <TouchableOpacity onPress={onClickRightButton}>
                 <Image source={rightIcon} style={{ tintColor: 'grey' }} />

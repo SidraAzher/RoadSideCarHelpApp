@@ -1,30 +1,49 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Images from '../../themes/images';
 import { CommonButton, Input } from '../../components';
 import { updateUser } from '../../services/ApiCall';
 import { Context } from '../../context';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const EditProfile = () => {
-    const loginContext = useContext(Context);
     const [state, setState] = useState({
-        fullName: '',
+        firstName: '',
+        lastName: '',
         userId: '',
         userName: '',
         email: '',
         phoneNo: '',
+        address: '',
     });
-    const { fullName, userId, userName, email, phoneNo } = state;
+
+    const { firstName, userId, userName, email, phoneNo, lastName, address } = state;
+
+    const getUserData = async () => {
+        const user: any = await AsyncStorage.getItem('userData');
+        const parsedUser = JSON.parse(user)
+        setState(s => ({ ...s, firstName: parsedUser.first_name, lastName: parsedUser.last_name, userId: parsedUser.id, email: parsedUser.email, phoneNo: parsedUser.mobile_no, address: parsedUser.address }))
+    }
+
+    useEffect(() => {
+        getUserData()
+    }, [])
+
     const editProfile = async () => {
         let formData = new FormData();
-        formData.append('fullName', fullName);
-        formData.append('userId', userId);
-        formData.append('userName', userName);
+        formData.append('first_name', firstName);
+        formData.append('last_name', lastName);
+        formData.append('address', address);
+
+
+        console.log(formData)
+
         try {
             // Await the Promise to get the response data
             let response = await updateUser(formData);
             console.log('responseee ==>', response);
             if (response) {
-                loginContext.setLogin(true);
+                await AsyncStorage.setItem('userData', JSON.stringify(response.data));
+
             }
         } catch (error) {
             console.error('Login failed:', error);
@@ -37,23 +56,32 @@ const EditProfile = () => {
                 leftIcon={Images.IcProfile}
                 placeholder="Full Name"
                 mTop={36}
-                value={fullName}
-                onChangeText={val => setState(s => ({ ...s, fullName: val }))}
+                value={firstName}
+                onChangeText={val => setState(s => ({ ...s, firstName: val }))}
+            />
+            <Input
+                leftIcon={Images.IcProfile}
+                placeholder="Last Name"
+                mTop={36}
+                value={lastName}
+                onChangeText={val => setState(s => ({ ...s, lastName: val }))}
+            />
+            <Input
+                leftIcon={Images.IcAddress}
+                placeholder="Address"
+                mTop={36}
+                value={address}
+                onChangeText={val => setState(s => ({ ...s, address: val }))}
             />
             <Input
                 leftIcon={Images.IcProfile}
                 placeholder="User ID"
                 mTop={11}
-                value={userId}
+                editable={false}
+                value={userId.toString()}
                 onChangeText={val => setState(s => ({ ...s, userId: val }))}
             />
-            <Input
-                leftIcon={Images.IcProfile}
-                placeholder="User Name"
-                mTop={11}
-                value={userName}
-                onChangeText={val => setState(s => ({ ...s, userName: val }))}
-            />
+
             <Input
                 inputMode="email"
                 editable={false}
@@ -69,7 +97,6 @@ const EditProfile = () => {
                 leftIcon={Images.IcPhoneNo}
                 placeholder="Phone No"
                 mTop={11}
-                rightIcon={Images.IcDownArrow}
                 value={phoneNo}
                 onChangeText={val => setState(s => ({ ...s, phoneNo: val }))}
             />
