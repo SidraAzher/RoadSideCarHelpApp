@@ -5,19 +5,19 @@ import { CommonButton } from "../../components";
 import { getUsers } from "../../services/ApiCall";
 const Home = () => {
 
-    const fetchUsers = async () => {
-        try {
-            const userData = await getUsers();
-            console.log("userData", userData)
+    // const fetchUsers = async () => {
+    //     try {
+    //         const userData = await getUsers();
+    //         console.log("userData", userData)
 
-        } catch (error) {
-            console.error('Error fetching users:', error);
-        }
-    };
+    //     } catch (error) {
+    //         console.error('Error fetching users:', error);
+    //     }
+    // };
 
-    useEffect(() => {
-        fetchUsers();
-    }, []);
+    // useEffect(() => {
+    //     fetchUsers();
+    // }, []);
 
 
 

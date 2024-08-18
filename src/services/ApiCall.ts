@@ -1,5 +1,51 @@
 import api from './ApiService';
 
+
+const loginUser = async (userData: FormData) => {
+  try {
+    const response = await api.post('/api/user/login', userData);
+    return response.data;
+  } catch (error) {
+    if (error.response) {
+      // Server responded with a status other than 2xx
+      console.error('Error response data:', error.response.data);
+      console.error('Error response status:', error.response.status);
+      console.error('Error response headers:', error.response.headers);
+    } else if (error.request) {
+      // Request was made but no response received
+      console.error('Error request:', error.request);
+    } else {
+      // Something happened in setting up the request
+      console.error('Error message:', error.message);
+    }
+    throw error;
+  }
+};
+
+const createUser = async (userData: FormData) => {
+  try {
+    const response = await api.post('/api/user/register', userData);
+    return response.data;
+  } catch (error) {
+    if (error.response) {
+      // Server responded with a status other than 2xx
+      console.error('Error response data:', error.response.data);
+      console.error('Error response status:', error.response.status);
+      console.error('Error response headers:', error.response.headers);
+    } else if (error.request) {
+      // Request was made but no response received
+      console.error('Error request:', error.request);
+    } else {
+      // Something happened in setting up the request
+      console.error('Error message:', error.message);
+    }
+    throw error;
+  }
+};
+
+
+
+
 const getUsers = async () => {
   try {
     const response = await api.get('/fact');
@@ -18,29 +64,6 @@ const getUserById = async (id) => {
   } catch (error) {
     // Handle error
     console.error(`Error fetching user with ID ${id}:`, error);
-    throw error;
-  }
-};
-
-const createUser = async (userData) => {
-  try {
-    const response = await api.post('/users', userData);
-    return response.data;
-  } catch (error) {
-    // Handle error
-    console.error('Error creating user:', error);
-    throw error;
-  }
-};
-
-const loginUser = async (userData: any) => {
-  console.log('userData ===>', userData)
-  try {
-    const response = await api.post('/users', userData);
-    return response.data;
-  } catch (error) {
-    // Handle error
-    console.error('Error creating user:', error);
     throw error;
   }
 };

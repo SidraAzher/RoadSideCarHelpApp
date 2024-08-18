@@ -11,8 +11,8 @@ const Login = () => {
     const loginContext = useContext(Context);
     const navigation = useNavigation();
     const [state, setState] = useState({
-        username: '',
-        password: '',
+        username: 'steve11@gmail2.com',
+        password: 'admin0101',
         visiblility: false,
         usernameValidation: false,
         passwordValidation: false,
@@ -51,17 +51,23 @@ const Login = () => {
     };
 
     const login = async () => {
-        let params = {
-            username: username,
-            password: password,
-        };
+        showValidation()
 
-        let response = loginUser(params);
-
-        console.log('response', response);
-
-        if (response) {
-            loginContext.setLogin(true);
+        let formData = new FormData()
+        formData.append('email', 'steve11@gmail2.com');
+        formData.append('password', 'admin0101');
+        formData.append('device_type', '123456');
+        formData.append('fcm_token', '9878645');
+        formData.append('device_id', 'ios');
+        try {
+            // Await the Promise to get the response data
+            let response = await loginUser(formData);
+            console.log("responseee ==>", response);
+            if (response) {
+                loginContext.setLogin(true);
+            }
+        } catch (error) {
+            console.error('Login failed:', error);
         }
     };
 
@@ -122,7 +128,7 @@ const Login = () => {
                 variant="primary"
                 title="SIGN IN"
                 mTop={51}
-                onPress={showValidation}
+                onPress={login}
             />
             <View style={styles.txtContainer}>
                 <CommonText variant="h6">Don’t have an account?</CommonText>
