@@ -80,7 +80,9 @@ const Login = () => {
     };
 
     return (
-        <ScrollView contentContainerStyle={styles.main}>
+        <ScrollView
+            contentContainerStyle={styles.main}
+            automaticallyAdjustKeyboardInsets={true}>
             <FlashMessage position="top" />
 
             <Image source={Images.IcLogo} style={styles.logo} />

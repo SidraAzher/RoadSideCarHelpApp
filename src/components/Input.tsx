@@ -34,6 +34,7 @@ interface InputType {
     | 'tel'
     | 'text'
     | 'url';
+    value?: string;
 }
 export const Input = ({
     placeholder,
