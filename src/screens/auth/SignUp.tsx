@@ -17,32 +17,40 @@ const SignUp = () => {
     const navigation = useNavigation();
 
     const [state, setState] = useState({
-        fullName: '',
+        firstName: '',
+        lastName: '',
         userId: '',
         userName: '',
         email: '',
         phoneNo: '',
         password: '',
     });
-    const { fullName, userId, userName, email, phoneNo, password } = state;
+    const { firstName, lastName, userId, userName, email, phoneNo, password } = state;
 
     const signUp = async () => {
         let formData = new FormData();
-        formData.append('fullName', fullName);
+        formData.append('first_name', firstName);
+        formData.append('last_name', lastName);
         formData.append('userId', userId);
         formData.append('userName', userName);
         formData.append('email', email);
-        formData.append('phoneNo', phoneNo);
+        formData.append('mobile_no', phoneNo);
         formData.append('password', password);
+        formData.append('device_type', '123456');
+        formData.append('fcm_token', '9878645');
+        formData.append('device_id', 'ios');
         try {
-            // Await the Promise to get the response data
             let response = await createUser(formData);
-            console.log('responseee ==>', response);
+            console.log("responseee ==>", response);
             if (response) {
                 LoginContext.setLogin(true);
             }
         } catch (error) {
-            console.error('Login failed:', error);
+            showMessage({
+                message: error,
+                type: "danger",
+            });
+
         }
     };
     return (
@@ -51,11 +59,20 @@ const SignUp = () => {
             automaticallyAdjustKeyboardInsets={true}>
             <Input
                 leftIcon={Images.IcProfile}
-                placeholder="Full Name"
+                placeholder="First Name"
                 mTop={11}
-                value={fullName}
+                value={firstName}
                 onChangeText={val => {
-                    setState(s => ({ ...s, fullName: val }));
+                    setState(s => ({ ...s, firstName: val }));
+                }}
+            />
+            <Input
+                leftIcon={Images.IcProfile}
+                placeholder="Last Name"
+                mTop={11}
+                value={lastName}
+                onChangeText={val => {
+                    setState(s => ({ ...s, lastName: val }));
                 }}
             />
             <Input

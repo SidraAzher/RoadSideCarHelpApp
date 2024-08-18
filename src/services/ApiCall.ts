@@ -31,8 +31,13 @@ const loginUser = async (userData: FormData) => {
 const createUser = async (userData: FormData) => {
   try {
     const response = await api.post('/api/user/register', userData);
+    const { token, data } = response.data;
+    await AsyncStorage.setItem('authToken', token);
+    await AsyncStorage.setItem('userData', JSON.stringify(data));
+
     return response.data;
-  } catch (error) {
+  }
+  catch (error) {
     if (error.response) {
       console.error('Error response data:', error.response.data.message);
       console.error('Error response status:', error.response.status);
