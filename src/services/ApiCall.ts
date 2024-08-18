@@ -1,13 +1,17 @@
 import api from './ApiService';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const loginUser = async (userData: FormData) => {
   try {
-    const response = await api.post('/api/user/login', userData);
+    const response: any = await api.post('/api/user/login', userData);
+    const { token, data } = response.data;
+    await AsyncStorage.setItem('authToken', token);
+    await AsyncStorage.setItem('userData', JSON.stringify(data));
+
     return response.data;
   } catch (error) {
     if (error.response) {
-
       // Server responded with a status other than 2xx
       console.error('Error response data:', error.response.data);
       console.error('Error response status:', error.response.status);
@@ -43,23 +47,9 @@ const createUser = async (userData: FormData) => {
   }
 };
 
-
-
-
-const getUsers = async () => {
-  try {
-    const response = await api.get('/fact');
-    return response.data;
-  } catch (error) {
-    // Handle error
-    console.error('Error fetching users:', error);
-    throw error;
-  }
-};
-
 const getUserById = async (id) => {
   try {
-    const response = await api.get(`/users/${id}`);
+    const response = await api.get(`/api/user/profile/${id}`);
     return response.data;
   } catch (error) {
     // Handle error
@@ -69,28 +59,33 @@ const getUserById = async (id) => {
 };
 
 
-const updateUser = async (id, userData) => {
+const updateUser = async (userData) => {
   try {
-    const response = await api.put(`/users/${id}`, userData);
+    const response = await api.put(`/api/user/profile/update`, userData);
     return response.data;
   } catch (error) {
     // Handle error
-    console.error(`Error updating user with ID ${id}:`, error);
+    console.error(`Error updating user`, error);
     throw error;
   }
 };
 
-const deleteUser = async (id) => {
+const logoutUser = async () => {
   try {
-    const response = await api.delete(`/users/${id}`);
+    const response = await api.post('/api/user/logout', {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    await AsyncStorage.setItem('authToken', '');
     return response.data;
   } catch (error) {
     // Handle error
-    console.error(`Error deleting user with ID ${id}:`, error);
+    console.error(`Error logging out`, error);
     throw error;
   }
 };
 
-export { getUsers, loginUser, getUserById, createUser, updateUser, deleteUser };
+export { loginUser, getUserById, createUser, updateUser, logoutUser };
 
 

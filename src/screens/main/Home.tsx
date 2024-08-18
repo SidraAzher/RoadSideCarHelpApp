@@ -2,22 +2,26 @@ import React, { useEffect } from "react";
 import { View, StyleSheet, ImageBackground } from "react-native";
 import Images from "../../themes/images";
 import { CommonButton } from "../../components";
-import { getUsers } from "../../services/ApiCall";
+import { getUserById } from "../../services/ApiCall";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 const Home = () => {
 
-    // const fetchUsers = async () => {
-    //     try {
-    //         const userData = await getUsers();
-    //         console.log("userData", userData)
+    const fetchUser = async () => {
+        try {
 
-    //     } catch (error) {
-    //         console.error('Error fetching users:', error);
-    //     }
-    // };
+            const user: any = await AsyncStorage.getItem('userData');
+            const parsedUser = JSON.parse(user)
+            const userData = await getUserById(parsedUser.id);
+            await AsyncStorage.setItem('userData', JSON.stringify(userData.data));
 
-    // useEffect(() => {
-    //     fetchUsers();
-    // }, []);
+        } catch (error) {
+            console.error('Error fetching users:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchUser();
+    }, []);
 
 
 

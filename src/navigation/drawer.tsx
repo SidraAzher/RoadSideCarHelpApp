@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
     StyleSheet,
     View,
@@ -10,9 +10,15 @@ import { CommonText } from '../components';
 import Images from '../themes/images';
 import { Colors } from '../themes/colors';
 import { Context } from '../context';
+import { logoutUser } from '../services/ApiCall';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+
 
 export const DrawerContent = ({ navigation }) => {
+
     const loginContext = useContext(Context);
+    const [userData, setUserData] = useState<any>({})
     const arry = [
         {
             title: 'Home',
@@ -37,6 +43,34 @@ export const DrawerContent = ({ navigation }) => {
             </CommonText>
         </TouchableOpacity>
     );
+
+
+    const logout = async () => {
+        try {
+            let response = await logoutUser();
+            if (response) {
+                loginContext.setLogin(false);
+            }
+        } catch (error) {
+            loginContext.setLogin(false)
+        }
+
+    }
+
+    const getUserFromStorage = async () => {
+        const user: any = await AsyncStorage.getItem('userData');
+        setUserData(JSON.parse(user))
+
+    }
+
+    useEffect(() => {
+        getUserFromStorage()
+    }, [])
+
+
+
+
+
     return (
         <View style={styles.main}>
             <TouchableOpacity
@@ -45,7 +79,7 @@ export const DrawerContent = ({ navigation }) => {
                 <Image source={Images.IcProfileCircle} />
                 <View style={styles.txtContainer}>
                     <CommonText variant="h2" size={14} color="white">
-                        Alexa Marston
+                        {userData?.first_name + " " + userData?.last_name}
                     </CommonText>
                     <CommonText variant="h6" color={Colors.Blue} style={{ lineHeight: 12 }}>
                         view or edit profile
@@ -57,11 +91,11 @@ export const DrawerContent = ({ navigation }) => {
                 <CommonText
                     variant="h4"
                     color="white"
-                    onPress={() => loginContext.setLogin(false)}>
+                    onPress={logout}>
                     Log out
                 </CommonText>
                 <CommonText variant="h5" color={Colors.Grey} style={{ lineHeight: 55 }}>
-                    jonathan.marshall@outlook.com
+                    {userData.email}
                 </CommonText>
             </View>
         </View>

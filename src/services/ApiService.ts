@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 
 // Create an instance of axios with default settings
@@ -12,9 +13,9 @@ const api = axios.create({
 
 // Request interceptor
 api.interceptors.request.use(
-    (config) => {
-        // Add authorization or any other request configuration
-        const token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL3VzZXIvbG9naW4iLCJpYXQiOjE3MjM5ODQ0MzIsImV4cCI6MTcyMzk4ODAzMiwibmJmIjoxNzIzOTg0NDMyLCJqdGkiOiJUQm1DdTNvenAzZ0xmbm0wIiwic3ViIjoiNCIsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.jd3BYh1w0PwSqvujSeIOuaJmErc-a_xLvNDxK7HRbkE'; // Replace with your method of getting token
+    async (config) => {
+        // Get token from AsyncStorage
+        const token = await AsyncStorage.getItem('authToken');
         if (token) {
             config.headers.Authorization = `Bearer ${token}`;
         }
