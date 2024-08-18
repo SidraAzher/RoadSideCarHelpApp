@@ -37,11 +37,10 @@ const Login = () => {
 
         if (email === '') {
             emailValidation = true;
-            return false
+
         }
         if (password === '') {
             passwordValidation = true;
-            return false
 
         }
         setState(s => ({
