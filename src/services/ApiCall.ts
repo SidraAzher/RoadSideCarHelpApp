@@ -7,10 +7,12 @@ const loginUser = async (userData: FormData) => {
     return response.data;
   } catch (error) {
     if (error.response) {
+
       // Server responded with a status other than 2xx
       console.error('Error response data:', error.response.data);
       console.error('Error response status:', error.response.status);
       console.error('Error response headers:', error.response.headers);
+
     } else if (error.request) {
       // Request was made but no response received
       console.error('Error request:', error.request);
@@ -18,7 +20,7 @@ const loginUser = async (userData: FormData) => {
       // Something happened in setting up the request
       console.error('Error message:', error.message);
     }
-    throw error;
+    throw error?.message;
   }
 };
 
@@ -28,16 +30,14 @@ const createUser = async (userData: FormData) => {
     return response.data;
   } catch (error) {
     if (error.response) {
-      // Server responded with a status other than 2xx
-      console.error('Error response data:', error.response.data);
+      console.error('Error response data:', error.response.data.message);
       console.error('Error response status:', error.response.status);
       console.error('Error response headers:', error.response.headers);
+      throw error.response.data.message;
     } else if (error.request) {
-      // Request was made but no response received
       console.error('Error request:', error.request);
     } else {
-      // Something happened in setting up the request
-      console.error('Error message:', error.message);
+      console.error('Error message:', error.response.data.message);
     }
     throw error;
   }

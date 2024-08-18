@@ -1,28 +1,30 @@
 import React, { useContext, useState } from 'react';
-import { View, StyleSheet, Image, ScrollView } from 'react-native';
+import { View, StyleSheet, Image, ScrollView, Button } from 'react-native';
 import { CommonButton, CommonText, Input } from '../../components';
 import { useNavigation } from '@react-navigation/native';
 import Images from '../../themes/images';
 import { Colors } from '../../themes/colors';
 import { Context } from '../../context';
 import { loginUser } from '../../services/ApiCall';
+import FlashMessage, { showMessage } from 'react-native-flash-message';
+// import FlashMessage from '../../components/FlashMessage';
 
 const Login = () => {
     const loginContext = useContext(Context);
     const navigation = useNavigation();
     const [state, setState] = useState({
-        username: 'steve11@gmail2.com',
-        password: 'admin0101',
+        email: '',
+        password: '',
         visiblility: false,
-        usernameValidation: false,
+        emailValidation: false,
         passwordValidation: false,
     });
     const {
-        username,
+        email,
         password,
         visiblility,
         passwordValidation,
-        usernameValidation,
+        emailValidation,
     } = state;
 
     const PasswordValidation = () => {
@@ -30,49 +32,57 @@ const Login = () => {
     };
 
     const showValidation = () => {
-        let usernameValidation = false;
+        let emailValidation = false;
         let passwordValidation = false;
 
-        if (username === '') {
-            usernameValidation = true;
+        if (email === '') {
+            emailValidation = true;
+            return false
         }
         if (password === '') {
             passwordValidation = true;
+            return false
+
         }
         setState(s => ({
             ...s,
-            usernameValidation,
+            emailValidation,
             passwordValidation,
         }));
 
-        if (!usernameValidation && !passwordValidation) {
-            loginContext.setLogin(true);
+        if (!emailValidation && !passwordValidation) {
+            return true
         }
     };
 
     const login = async () => {
-        showValidation()
-
+        const validation = showValidation()
+        if (!validation) return
         let formData = new FormData()
-        formData.append('email', 'steve11@gmail2.com');
-        formData.append('password', 'admin0101');
+        formData.append('email', email);
+        formData.append('password', password);
         formData.append('device_type', '123456');
         formData.append('fcm_token', '9878645');
         formData.append('device_id', 'ios');
         try {
-            // Await the Promise to get the response data
             let response = await loginUser(formData);
             console.log("responseee ==>", response);
             if (response) {
                 loginContext.setLogin(true);
             }
         } catch (error) {
-            console.error('Login failed:', error);
+            showMessage({
+                message: error,
+                type: "danger",
+            });
+
         }
     };
 
     return (
         <ScrollView contentContainerStyle={styles.main}>
+            <FlashMessage position="top" />
+
             <Image source={Images.IcLogo} style={styles.logo} />
             <CommonText
                 color={Colors.DarkGrey}
@@ -89,15 +99,15 @@ const Login = () => {
                 Login or sign up to continue.
             </CommonText>
             <Input
-                placeholder="User Name"
+                placeholder="Email"
                 leftIcon={Images.IcProfile}
                 mTop={25}
-                value={username}
-                onChangeText={val => setState(s => ({ ...s, username: val }))}
+                value={email}
+                onChangeText={val => setState(s => ({ ...s, email: val }))}
             />
-            {usernameValidation && (
+            {emailValidation && (
                 <CommonText variant="h4" color="red">
-                    Username Is Required
+                    Email Is Required
                 </CommonText>
             )}
             <Input
