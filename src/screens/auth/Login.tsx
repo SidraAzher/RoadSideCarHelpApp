@@ -19,13 +19,8 @@ const Login = () => {
         emailValidation: false,
         passwordValidation: false,
     });
-    const {
-        email,
-        password,
-        visiblility,
-        passwordValidation,
-        emailValidation,
-    } = state;
+    const { email, password, visiblility, passwordValidation, emailValidation } =
+        state;
 
     const PasswordValidation = () => {
         setState(s => ({ ...s, visiblility: !s.visiblility }));
@@ -37,11 +32,9 @@ const Login = () => {
 
         if (email === '') {
             emailValidation = true;
-
         }
         if (password === '') {
             passwordValidation = true;
-
         }
         setState(s => ({
             ...s,
@@ -50,14 +43,14 @@ const Login = () => {
         }));
 
         if (!emailValidation && !passwordValidation) {
-            return true
+            return true;
         }
     };
 
     const login = async () => {
-        const validation = showValidation()
-        if (!validation) return
-        let formData = new FormData()
+        const validation = showValidation();
+        if (!validation) return;
+        let formData = new FormData();
         formData.append('email', email);
         formData.append('password', password);
         formData.append('device_type', '123456');
@@ -65,16 +58,15 @@ const Login = () => {
         formData.append('device_id', 'ios');
         try {
             let response = await loginUser(formData);
-            console.log("responseee ==>", response);
+            console.log('responseee ==>', response);
             if (response) {
                 loginContext.setLogin(true);
             }
         } catch (error) {
             showMessage({
                 message: error,
-                type: "danger",
+                type: 'danger',
             });
-
         }
     };
 
@@ -97,7 +89,7 @@ const Login = () => {
                 color={Colors.DarkGrey}
                 mTop={11}
                 style={{ letterSpacing: 0.56 }}>
-                Login or sign up to continue.
+                Login to continue.
             </CommonText>
             <Input
                 placeholder="Email"
@@ -126,15 +118,6 @@ const Login = () => {
                     Password Is Required
                 </CommonText>
             )}
-            <CommonText
-                onPress={() => navigation.navigate('ForgotPassword')}
-                variant="h2"
-                size={12}
-                color={Colors.Blue}
-                mTop={16}
-                textAlign="right">
-                Forgot Password?
-            </CommonText>
             <CommonButton
                 variant="primary"
                 title="SIGN IN"

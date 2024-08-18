@@ -33,10 +33,6 @@ const EditProfile = () => {
         formData.append('first_name', firstName);
         formData.append('last_name', lastName);
         formData.append('address', address);
-
-
-        console.log(formData)
-
         try {
             // Await the Promise to get the response data
             let response = await updateUser(formData);
@@ -46,7 +42,7 @@ const EditProfile = () => {
 
             }
         } catch (error) {
-            console.error('Login failed:', error);
+            console.error('Edit failed:', error);
         }
     };
 
@@ -54,7 +50,7 @@ const EditProfile = () => {
         <View style={styles.main}>
             <Input
                 leftIcon={Images.IcProfile}
-                placeholder="Full Name"
+                placeholder="First Name"
                 mTop={36}
                 value={firstName}
                 onChangeText={val => setState(s => ({ ...s, firstName: val }))}
@@ -62,14 +58,14 @@ const EditProfile = () => {
             <Input
                 leftIcon={Images.IcProfile}
                 placeholder="Last Name"
-                mTop={36}
+                mTop={11}
                 value={lastName}
                 onChangeText={val => setState(s => ({ ...s, lastName: val }))}
             />
             <Input
                 leftIcon={Images.IcAddress}
                 placeholder="Address"
-                mTop={36}
+                mTop={11}
                 value={address}
                 onChangeText={val => setState(s => ({ ...s, address: val }))}
             />
