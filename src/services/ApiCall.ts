@@ -66,7 +66,7 @@ const getUserById = async (id) => {
 
 const updateUser = async (userData) => {
   try {
-    const response = await api.put(`/api/user/profile/update`, userData);
+    const response = await api.post(`/api/user/profile/update`, userData);
     return response.data;
   } catch (error) {
     // Handle error
