@@ -36,7 +36,6 @@ const EditProfile = () => {
         try {
             // Await the Promise to get the response data
             let response = await updateUser(formData);
-            console.log('responseee ==>', response);
             if (response) {
                 await AsyncStorage.setItem('userData', JSON.stringify(response.data));
 

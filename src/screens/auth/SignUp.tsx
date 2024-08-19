@@ -18,6 +18,7 @@ const SignUp = () => {
         email: '',
         phoneNo: '',
         password: '',
+        address: '',
         firstNameValidation: false,
         lastNameValidation: false,
         userIdValidation: false,
@@ -25,6 +26,7 @@ const SignUp = () => {
         emailValidation: false,
         phoneNoValidation: false,
         passwordValidation: false,
+        addressValidation: false,
         visiblility: false,
     });
     const {
@@ -35,6 +37,7 @@ const SignUp = () => {
         email,
         phoneNo,
         password,
+        address,
         firstNameValidation,
         lastNameValidation,
         userIdValidation,
@@ -42,6 +45,7 @@ const SignUp = () => {
         emailValidation,
         phoneNoValidation,
         passwordValidation,
+        addressValidation,
         visiblility,
     } = state;
 
@@ -56,6 +60,7 @@ const SignUp = () => {
         let emailValidation = false;
         let phoneNoValidation = false;
         let passwordValidation = false;
+        let addressValidation = false;
 
         if (firstName === '') {
             firstNameValidation = true;
@@ -78,6 +83,9 @@ const SignUp = () => {
         if (password === '') {
             passwordValidation = true;
         }
+        if (address === '') {
+            addressValidation = true
+        }
         setState(s => ({
             ...s,
             firstNameValidation,
@@ -87,6 +95,7 @@ const SignUp = () => {
             emailValidation,
             phoneNoValidation,
             passwordValidation,
+            addressValidation,
         }));
 
         if (
@@ -96,7 +105,8 @@ const SignUp = () => {
             !userNameValidation &&
             !emailValidation &&
             !phoneNoValidation &&
-            !passwordValidation
+            !passwordValidation &&
+            !addressValidation
         ) {
             return true;
         }
@@ -113,6 +123,7 @@ const SignUp = () => {
         formData.append('email', email);
         formData.append('mobile_no', phoneNo);
         formData.append('password', password);
+        formData.append('address', address);
         formData.append('device_type', '123456');
         formData.append('fcm_token', '9878645');
         formData.append('device_id', 'ios');
@@ -204,6 +215,18 @@ const SignUp = () => {
             {userNameValidation && (
                 <CommonText variant="h4" color="red">
                     User Name Is Required
+                </CommonText>
+            )}
+            <Input
+                leftIcon={Images.IcAddress}
+                placeholder="Address"
+                mTop={11}
+                value={address}
+                onChangeText={val => setState(s => ({ ...s, address: val }))}
+            />
+            {addressValidation && (
+                <CommonText variant="h4" color="red">
+                    Address Is Required
                 </CommonText>
             )}
             <Input
