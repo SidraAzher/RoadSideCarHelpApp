@@ -19,7 +19,7 @@ const loginUser = async (userData: FormData) => {
 
     } else if (error.request) {
       // Request was made but no response received
-      console.error('Error request:', error.request);
+      console.error('Error request: ===>', error.request);
     } else {
       // Something happened in setting up the request
       console.error('Error message:', error.message);
@@ -44,7 +44,7 @@ const createUser = async (userData: FormData) => {
       console.error('Error response headers:', error.response.headers);
       throw error.response.data.message;
     } else if (error.request) {
-      console.error('Error request:', error.request);
+      console.error('Error request: ====>', error.request);
     } else {
       console.error('Error message:', error.response.data.message);
     }

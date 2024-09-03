@@ -73,7 +73,7 @@ const selectedVariant = (variant: string) => {
 }
 
 export const CommonText = (
-    { children, variant, color, size, style, textAlign, mTop, props, onPress }: TextType) => {
+    { children, variant, color = "gray", size, style, textAlign, mTop, props, onPress }: TextType) => {
     const staticStyles = { ...selectedVariant(variant) };
     return <Text onPress={onPress} {...props} style={[staticStyles, { fontSize: size ? size : staticStyles.fontSize, color: color, textAlign: textAlign, marginTop: mTop }, style]}
     >

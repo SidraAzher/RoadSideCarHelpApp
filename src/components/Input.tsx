@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {
     Image,
     ImageProps,
+    Platform,
     StyleProp,
     StyleSheet,
     Text,
@@ -67,7 +68,7 @@ export const Input = ({
                     : { borderWidth: 0 },
                 style,
             ]}>
-            <Image source={leftIcon} />
+            <Image source={leftIcon} style={{ alignSelf: 'center' }} />
             <TextInput
                 placeholder={placeholder}
                 style={styles.input}
@@ -81,7 +82,7 @@ export const Input = ({
                 inputMode={inputMode}
                 value={value}
             />
-            <TouchableOpacity onPress={onClickRightButton}>
+            <TouchableOpacity onPress={onClickRightButton} style={{ justifyContent: 'center' }}>
                 <Image source={rightIcon} style={{ tintColor: 'grey' }} />
             </TouchableOpacity>
         </View>
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
     main: {
         flexDirection: 'row',
         backgroundColor: Colors.LightGrey,
-        paddingVertical: 19,
+        paddingVertical: Platform.OS == 'ios' ? 19 : 5,
         paddingHorizontal: 20,
         borderRadius: 10,
     },
@@ -101,6 +102,7 @@ const styles = StyleSheet.create({
         paddingRight: 20,
         fontFamily: 'GibsonRegular',
         fontSize: 16,
+        color: 'gray',
         lineHeight: 17,
     },
 });

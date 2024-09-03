@@ -2,10 +2,12 @@ import React, { useContext, useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Images from '../../themes/images';
 import { CommonButton, Input } from '../../components';
-import { updateUser } from '../../services/ApiCall';
+import { getUserById, updateUser } from '../../services/ApiCall';
 import { Context } from '../../context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from '@react-navigation/native';
 const EditProfile = () => {
+    const navigation = useNavigation()
     const [state, setState] = useState({
         firstName: '',
         lastName: '',
@@ -24,7 +26,20 @@ const EditProfile = () => {
         setState(s => ({ ...s, firstName: parsedUser.first_name, lastName: parsedUser.last_name, userId: parsedUser.id, email: parsedUser.email, phoneNo: parsedUser.mobile_no, address: parsedUser.address }))
     }
 
+
+    const getUserDataById = async () => {
+        const user: any = await AsyncStorage.getItem('userData');
+        const parsedUser = JSON.parse(user)
+
+        let data = await getUserById(parsedUser.id)
+        console.log("data ====>", data)
+        AsyncStorage.setItem('userData', JSON.stringify(data));
+    }
+
+
+
     useEffect(() => {
+        getUserDataById()
         getUserData()
     }, [])
 
@@ -38,6 +53,10 @@ const EditProfile = () => {
             let response = await updateUser(formData);
             if (response) {
                 await AsyncStorage.setItem('userData', JSON.stringify(response.data));
+                const user: any = await AsyncStorage.getItem('userData');
+                console.log("user ==?>", user)
+                // getUserDataById()
+                navigation.goBack()
 
             }
         } catch (error) {
@@ -73,7 +92,7 @@ const EditProfile = () => {
                 placeholder="User ID"
                 mTop={11}
                 editable={false}
-                value={userId.toString()}
+                value={userId?.toString()}
                 onChangeText={val => setState(s => ({ ...s, userId: val }))}
             />
 

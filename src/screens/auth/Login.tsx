@@ -55,7 +55,8 @@ const Login = () => {
         formData.append('password', password);
         formData.append('device_type', '123456');
         formData.append('fcm_token', '9878645');
-        formData.append('device_id', 'ios');
+        formData.append('device_id', 'android');
+        console.log("login ===  ==>", formData)
         try {
             let response = await loginUser(formData);
             console.log('responseee ==>', response);

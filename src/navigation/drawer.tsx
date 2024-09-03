@@ -79,11 +79,12 @@ export const DrawerContent = ({ navigation }) => {
                 <Image source={Images.IcProfileCircle} />
                 <View style={styles.txtContainer}>
                     <CommonText variant="h2" size={14} color="white">
-                        {userData?.first_name + " " + userData?.last_name}
+                        View or edit profile
+                        {/* {userData?.first_name + " " + userData?.last_name} */}
                     </CommonText>
-                    <CommonText variant="h6" color={Colors.Blue} style={{ lineHeight: 12 }}>
+                    {/* <CommonText variant="h6" color={Colors.Blue} style={{ lineHeight: 12 }}>
                         view or edit profile
-                    </CommonText>
+                    </CommonText> */}
                 </View>
             </TouchableOpacity>
             <FlatList data={arry} renderItem={renderItems} style={styles.flatlist} />

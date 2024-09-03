@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // Create an instance of axios with default settings
 const api = axios.create({
-    baseURL: 'http://127.0.0.1:8000',
+    baseURL: 'http://192.168.100.2:8000',
     timeout: 120000, // Request timeout
     headers: {
         'Content-Type': 'multipart/form-data',
